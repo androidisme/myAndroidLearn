@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MyStudyDemo</string>
+    <string name="bt_content_sencondprocess">到下一Activity</string>
 </resources>
