@@ -3,9 +3,14 @@ package com.syd.mystudydemo.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Process;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.syd.mystudydemo.MyApplication;
@@ -35,7 +40,12 @@ public class ActivitySecond extends BaseActivity implements View.OnClickListener
         Log.e(TAG, "getApplication-->" + getApplication());
         Log.e(TAG, "getApplicationContext()-->" + getApplicationContext());
         Log.e(TAG, "MyApplication.ss" + MyApplication.ss);
+        RecyclerView recyclerView = new RecyclerView(this);
 
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1);
+        ScrollView scrollView = null;
 
 
     }
@@ -56,7 +66,6 @@ public class ActivitySecond extends BaseActivity implements View.OnClickListener
         button.setOnClickListener(this);
     }
 
-
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -64,6 +73,24 @@ public class ActivitySecond extends BaseActivity implements View.OnClickListener
                 Intent intent = new Intent(this, ActivityThird.class);
                 startActivity(intent);
                 break;
+        }
+    }
+
+    class Adapterr extends RecyclerView.Adapter {
+
+        @Override
+        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            return null;
+        }
+
+        @Override
+        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+
+        }
+
+        @Override
+        public int getItemCount() {
+            return 0;
         }
     }
 

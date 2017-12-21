@@ -15,14 +15,15 @@ import com.syd.mystudydemo.utils.UtilsProcess;
 public class MyApplication extends Application {
     public static String string =
             MyApplication.class.getSimpleName() + Process.myPid() + "===" + Process.myUid() + "===" + Process.myTid();
-    String TAG = getClass().getSimpleName();
     public static String ss;
+    String TAG = getClass().getSimpleName();
 
     @Override
     public void onCreate() {
 //        startActivity(new Intent(this, ActivityThird.class));
         super.onCreate();
-        ss = UtilsProcess.getProcessName(Process.myPid(),getApplicationContext());
+//        CrashExceptionHandler.getInstace().init();
+        ss = UtilsProcess.getProcessName(Process.myPid(), getApplicationContext());
         Log.e(TAG, TAG + AppConst.LOG_TAG);
         Log.e(TAG, TAG + "onCreate()");
         Log.e(TAG, "MyApplication.class.getName()-->" + MyApplication.class.getName());

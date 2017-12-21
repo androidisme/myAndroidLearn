@@ -26,6 +26,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hello World!"/>
+
+            <TextView
+                android:id="@+id/tv_thread"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="20px"
+                android:text="Start-Thread"/>
+
             <EditText
                 android:id="@+id/et_done"
                 android:layout_width="match_parent"
