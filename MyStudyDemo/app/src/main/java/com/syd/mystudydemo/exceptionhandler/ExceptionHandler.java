@@ -28,7 +28,13 @@ public class ExceptionHandler {
             return;
         }
         mIsInstall = true;
+        //你自己定义的异常处理类，可以自己决定异常如何处理
         mCustomExceptionHandler = customExceptionHandler;
+        Looper.prepare();
+        // 通过Handler向主线程的queue中添加一个Runnabel(此处new Handler()里面传
+        // 参数Looer.getMainLooper()就是为了是向主线程的queue中添加，如果不传这个
+        // 参数就是默认的了，)
+
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {

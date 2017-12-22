@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.syd.mystudydemo.config.AppConst;
+import com.syd.mystudydemo.exceptionhandler.ExceptionHandler;
 import com.syd.mystudydemo.utils.UtilsProcess;
 
 /**
@@ -23,6 +24,13 @@ public class MyApplication extends Application {
 //        startActivity(new Intent(this, ActivityThird.class));
         super.onCreate();
 //        CrashExceptionHandler.getInstace().init();
+        ExceptionHandler.install(new ExceptionHandler.CustomExceptionHandler() {
+            @Override
+            public void handlerException(Thread thread, Throwable throwable) {
+                if (throwable != null)
+                    Log.e("ExceptionHandler=====", throwable.getMessage() + "");
+            }
+        });
         ss = UtilsProcess.getProcessName(Process.myPid(), getApplicationContext());
         Log.e(TAG, TAG + AppConst.LOG_TAG);
         Log.e(TAG, TAG + "onCreate()");

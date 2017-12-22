@@ -113,17 +113,53 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 
         //  参考：https://github.com/android-notes/Cockroach
+        http://www.jianshu.com/p/01b69d91a3a8
+
         当APP在线程中跑出了异常就会导致AP crash。比如我们最常见的NullPointerException
         空指针异常。有些时候我们不希望这种异常导致我们的APP crash，如果在debug状态下，程序
         很大的时候编译运行一次也不容易，debug的时候好不容易程序启动起来了，发生了crash就不能
         debug执行了，有时候会很耽误开发。所有有了这个自定义的异常处理。它可以捕获你的异常，使
         程序不会crash，这样就可以继续调试了。
 
+        1.首先介绍 Thread.UncaughtExceptionHandler
+        ![UncaughtExceptionHandler文档]()
+        文档说明：当一个线程突然的因为没有捕获到的异常而停止的时候会由这个接口来处理。
+        当一个线程由于没有捕获的异常而终止的时候,Java虚拟机将查询这个线程通过
+        UncaughtExceptionHandler的getUncaughtExceptionHandler。并将调用uncaughtExce方法，
+        并且把这个线程和异常作为参数传递过去。如果一个线程没有他的UncaughtExceptionHandler设置，
+        那么它的
+        ThreadGroup对象作为它的UncaughtExceptionHandler。如果ThreadGroup对象没有特别的
+        处理异常要求，它可以调用getDefaultUncaughtExceptionHandler。即系统默认的的
+        UncaughtExceptionHandler。
+        简单来说UncaughtExceptionHandler就是用于在线程中当一些系统没有捕获的异常发生的时候来处理
+        这些异常的。你可以使用系统默认的处理方式，你也可以通过
+         Thread.setDefaultUncaughtExceptionHandler()方法设置你自己定义的异常处理。
+         ![uncaughtException_method.jpg]()
+
+         注意Thread.setDefaultUncaughtExceptionHandler(CustomUncaughtExceptionHandler)后
+         只能保证当在你的程序中如果crash没有发生在UI线程（主线程）中而是在别的线程中的时候，
+         这个时候APP是不会出现崩溃的现象的。如果在主线程中出现crash后，APP还是会崩溃的
+
+         2.进一步防止程序出现崩溃的现象
+            开头已经说了，有很多时候虽然我们的APP会因为各种问题闪退，但是在更多的时候我们是不希望
+            我的APP闪退的这就出现了下面的方法。
+            首先说明这种方法在Activity初始化的时候可能会导致你的APP出现类似ANR的情况（其实并不是
+            ANR，只是状态看起来像，造成的原因是因为Activity还没有完成初始化，也就是生命周期还没有
+            执行完毕就遇到异常了，导致了页面没法显示，所以在正式发布的APP中还是要慎重使用）
+
+            如何使用呢？需要和你的后台商量好，在程序中做好标志控制该不该使用ExceptionHandler
+            来处理。如果你的程序某个地方出现大量crash的时候，而这个功能是在Activity初始化后
+            （可能是由于点击某个按钮触动的问题）这个时候你就可以用ExceptionHandler来处理了，
+            让用户在点击这个按钮后，不至于程序崩溃掉。
+
 
 
          */
+        Thread.getDefaultUncaughtExceptionHandler();
+        Thread.getAllStackTraces();
 
 
+        Thread.UncaughtExceptionHandler d;
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -65,6 +65,7 @@ public class CrashExceptionHandler implements Thread.UncaughtExceptionHandler {
 //            mDefaultHandler.uncaughtException(t, e);
 //        }
         if (e != null) {
+            // 在这里你就可以对异常进行处理了（比如：把错误日志发送到服务器端，等等操作）
             Log.e(TAG + simpleDateFormat.format(new Date()), e.getMessage());
         }
 
