@@ -13,6 +13,7 @@ import com.syd.mystudydemo.config.AppConst;
 import com.syd.mystudydemo.manager.CustomManager;
 import com.syd.mystudydemo.utils.UtilsProcess;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.syd.mystudydemo.R.id.tv;
@@ -23,7 +24,7 @@ import static com.syd.mystudydemo.R.id.tv;
 
 public class ActivityThird extends BaseActivity implements View.OnClickListener {
     //开启线程
-//    @BindView(R.id.tv_thread)
+    @BindView(R.id.tv_thread)
     TextView tvThread;
     private TextView textView;
 

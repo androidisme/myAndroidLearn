@@ -30,10 +30,14 @@ public class ExceptionHandler {
         mIsInstall = true;
         //你自己定义的异常处理类，可以自己决定异常如何处理
         mCustomExceptionHandler = customExceptionHandler;
-        Looper.prepare();
         // 通过Handler向主线程的queue中添加一个Runnabel(此处new Handler()里面传
         // 参数Looer.getMainLooper()就是为了是向主线程的queue中添加，如果不传这个
-        // 参数就是默认的了，)
+        // 参数就是默认的了)当主线程执行到我们发送的这个Runnable的时候就会进入我们
+        // 的while死循环，如果while内部是空的话就会造成代码卡死在这里导致ANR，但是我们
+        // 在while中调用了Looper.loop(),这就使得我们的主线程又开始工作了，不断的从
+        //queue中获取Message执行(其实Android的机制就是这样的不断的从主线程的queue中
+        // 获取message并且执行)。这样就可以保证以后主线程的所有异常都会从我们手动调用
+        //的Looper.loop()处抛出了。
 
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
@@ -42,6 +46,7 @@ public class ExceptionHandler {
                 while (true) {
                     try {
                         Looper.loop();
+                        Looper.prepare();
                     } catch (Throwable throwable) {
                         if (throwable instanceof QuitExceptionHandler) {
                             return;
