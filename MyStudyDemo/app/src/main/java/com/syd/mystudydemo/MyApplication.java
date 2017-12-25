@@ -21,9 +21,10 @@ public class MyApplication extends Application {
 
     @Override
     public void onCreate() {
-//        startActivity(new Intent(this, ActivityThird.class));
         super.onCreate();
 //        CrashExceptionHandler.getInstace().init();
+
+        //ExceptionHander的使用
         ExceptionHandler.install(new ExceptionHandler.CustomExceptionHandler() {
             @Override
             public void handlerException(Thread thread, Throwable throwable) {
@@ -31,6 +32,7 @@ public class MyApplication extends Application {
                     Log.e("ExceptionHandler=====", throwable.getMessage() + "");
             }
         });
+
         ss = UtilsProcess.getProcessName(Process.myPid(), getApplicationContext());
         Log.e(TAG, TAG + AppConst.LOG_TAG);
         Log.e(TAG, TAG + "onCreate()");
