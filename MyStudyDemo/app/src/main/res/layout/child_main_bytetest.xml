@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/et_input_num"
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:hint="输入运算数值"
+        android:textSize="32px"/>
+
+    <EditText
+        android:id="@+id/et_input_move"
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:hint="输入移动位数"
+        android:textSize="32px"/>
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:textSize="32px"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_marginLeft="40px"
+        android:layout_marginRight="40px"
+        android:layout_height="100px"
+        android:id="@+id/acBt_right"
+        android:text="右移运算"/>
+    <android.support.v7.widget.AppCompatButton
+        android:layout_marginTop="10px"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="40px"
+        android:layout_marginRight="40px"
+        android:layout_height="100px"
+        android:id="@+id/acBt_left"
+        android:text="左移运算"/>
+    <android.support.v7.widget.AppCompatButton
+        android:layout_marginTop="10px"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="40px"
+        android:layout_marginRight="40px"
+        android:layout_height="100px"
+        android:id="@+id/acBt_right_no"
+        android:text="无符号右移运算"/>
+
+
+</LinearLayout>

@@ -1,4 +1,4 @@
-package com.syd.mystudydemo.activity;
+package com.syd.mystudydemo.process_training.activity;
 
 import android.os.Bundle;
 import android.os.Process;
@@ -10,7 +10,6 @@ import com.syd.mystudydemo.MyApplication;
 import com.syd.mystudydemo.R;
 import com.syd.mystudydemo.activity.base.BaseActivity;
 import com.syd.mystudydemo.config.AppConst;
-import com.syd.mystudydemo.manager.CustomManager;
 import com.syd.mystudydemo.utils.UtilsProcess;
 
 import butterknife.BindView;
@@ -52,7 +51,6 @@ public class ActivityThird extends BaseActivity implements View.OnClickListener 
         textView = findViewById(tv);
         textView.setText(getClass().getSimpleName());
         Log.e(TAG, "==" + this);
-        CustomManager.getInstance(this).log();
 
     }
 

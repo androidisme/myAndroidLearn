@@ -1,4 +1,4 @@
-package com.syd.mystudydemo.activity;
+package com.syd.mystudydemo.process_training.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
