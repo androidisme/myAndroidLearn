@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:focusableInTouchMode="true"
+        android:focusable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="match_parent"
+            android:layout_height="88px"
+            android:background="#eee"
+            android:hint="搜索内容"
+            android:paddingLeft="30px"
+            android:singleLine="true"
+            android:textSize="24px"/>
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/iv_search"
+        android:contentDescription="隐藏键盘"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10px"
+        android:src="@mipmap/ic_launcher"
+        />
+
+</LinearLayout>

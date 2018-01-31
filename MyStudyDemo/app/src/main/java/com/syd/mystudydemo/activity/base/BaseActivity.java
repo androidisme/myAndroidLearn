@@ -8,7 +8,8 @@ import android.os.Bundle;
  */
 
 public class BaseActivity extends Activity {
-    public String TAG ;
+    public String TAG;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,14 +17,29 @@ public class BaseActivity extends Activity {
     }
 
     protected void init() {
+        initDef();
         initView();
         initListener();
     }
+
+    /**
+     * 初始化定义内容
+     */
+    protected void initDef() {
+
+    }
+
+    /**
+     * 初始View
+     */
 
     protected void initView() {
 
     }
 
+    /**
+     * 注册监听事件
+     */
     protected void initListener() {
 
     }

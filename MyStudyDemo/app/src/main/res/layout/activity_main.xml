@@ -12,25 +12,19 @@
     tools:context="com.syd.mystudydemo.activity.MainActivity">
     <!--公共按钮，负责跳转到相应的training页面-->
     <TextView
+        style="@style/activity_main_text"
         android:id="@+id/tv_next"
-        android:layout_width="match_parent"
-        android:layout_height="100px"
-        android:layout_marginBottom="10px"
-        android:layout_marginTop="10px"
-        android:background="@color/colorAccent"
-        android:gravity="center"
-        android:text="@string/text_surface"
-        android:textColor="#fff"/>
+        android:text="@string/text_surface"/>
     <!--公共按钮，负责跳转到相应的training页面-->
     <TextView
+        style="@style/activity_main_text"
         android:id="@+id/tv_to_activity_first"
-        android:layout_width="match_parent"
-        android:layout_height="100px"
-        android:layout_marginBottom="10px"
-        android:layout_marginTop="10px"
         android:background="@color/colorAccent"
-        android:text="@string/text_process"
-        android:gravity="center"
-        android:textColor="#fff"/>
+        android:text="@string/text_process"/>
+
+    <TextView
+        android:id="@+id/tv_next_inputmanager"
+        style="@style/activity_main_text"
+        android:text="@string/text_input"/>
 
 </LinearLayout>

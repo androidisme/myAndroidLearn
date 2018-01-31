@@ -11,6 +11,7 @@ import com.syd.mystudydemo.R;
 import com.syd.mystudydemo.activity.base.BaseActivity;
 import com.syd.mystudydemo.process_training.activity.ActivityFirst;
 import com.syd.mystudydemo.training_surface.ActivitySurface;
+import com.syd.mystudydemo.utils.UtilsGoNextPage;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,12 +23,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     //到下一training页面按钮
     @BindView(R.id.tv_next)
     TextView tvNextSurface;
-    @BindView(R.id.tv_next)
-    TextView tvNext;
     @BindView(R.id.activity_main)
     LinearLayout activityMain;
     @BindView(R.id.tv_to_activity_first)
     TextView tvToActivityFirst;
+    @BindView(R.id.tv_next_inputmanager)
+    TextView tvNextInputmanager;
     private Button bt_toSenconActivity;
 
     @Override
@@ -225,6 +226,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         super.initListener();
         tvNextSurface.setOnClickListener(this);
         tvToActivityFirst.setOnClickListener(this);
+        tvNextInputmanager.setOnClickListener(this);
     }
 
     @Override
@@ -234,10 +236,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.tv_to_activity_first:
                 Intent intent1 = new Intent(this, ActivityFirst.class);
                 startActivity(intent1);
-                // 到Surface练习页面
+                break;
+            // 到Surface练习页面
             case R.id.tv_next:
                 Intent intent2 = new Intent(this, ActivitySurface.class);
                 startActivity(intent2);
+                break;
+            //到软键盘测试页面按钮
+            case R.id.tv_next_inputmanager:
+                UtilsGoNextPage.toActivityInputManager(this);
+                break;
         }
     }
 }
