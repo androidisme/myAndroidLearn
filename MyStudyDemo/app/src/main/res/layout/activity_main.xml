@@ -32,4 +32,9 @@
         android:id="@+id/tv_next_eventbus"
         style="@style/activity_main_text"
         android:text="@string/text_eventbus"/>
+
+    <TextView
+        android:id="@+id/tv_next_focus"
+        style="@style/activity_main_text"
+        android:text="@string/text_focus"/>
 </LinearLayout>

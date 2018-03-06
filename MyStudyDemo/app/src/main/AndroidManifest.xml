@@ -29,6 +29,9 @@
         <!--EventBus——training-->
         <activity android:name=".training_eventbus.ActivityEventBus"/>
         <activity android:name=".training_eventbus.ActivityEventBusSend"/>
+        <!--Focus——training-->
+        <activity android:name=".training_focus.ActivityMain"/>
+
     </application>
     <!--连接网络权限，用于执行云端语音能力 -->
     <uses-permission android:name="android.permission.INTERNET"/>

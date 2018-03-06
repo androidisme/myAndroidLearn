@@ -31,6 +31,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     TextView tvNextInputmanager;
     @BindView(R.id.tv_next_eventbus)
     TextView tvNextEventbus;
+    @BindView(R.id.tv_next_focus)
+    TextView tvNextFocus;
     private Button bt_toSenconActivity;
 
     @Override
@@ -231,6 +233,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         tvNextInputmanager.setOnClickListener(this);
         //到EventBus练习页面
         tvNextEventbus.setOnClickListener(this);
+        //到Focus页面
+        tvNextFocus.setOnClickListener(this);
     }
 
     @Override
@@ -253,6 +257,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.tv_next_eventbus:
 
                 UtilsGoNextPage.toActivityEventBus(this);
+                break;
+            //到焦点练习页面
+            case R.id.tv_next_focus:
+                UtilsGoNextPage.toActivityFocus(this);
                 break;
         }
     }
