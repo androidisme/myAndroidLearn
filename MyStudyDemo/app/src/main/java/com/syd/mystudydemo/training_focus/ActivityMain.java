@@ -31,6 +31,13 @@ public class ActivityMain extends BaseActivity {
     }
     //todo MeasureSpec
     /*
+
+    http://blog.csdn.net/minimicall/article/details/40983331
+
+    http://blog.csdn.net/hanhailong726188/article/details/46136569
+
+    https://www.jianshu.com/p/a1c5ee18c072
+
     MeasureSpec类介绍
     [图片]
     首先MearsureSpec类是View类的一个内部静态类
