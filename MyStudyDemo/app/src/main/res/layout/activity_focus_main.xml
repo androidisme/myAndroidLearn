@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <ScrollView
+        android:id="@+id/sv"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -14,6 +15,36 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <EditText
+                android:id="@+id/et"
+                android:hint="ddd"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"/>
+            <TextView
+                android:id="@+id/tv_content1"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="标题内容"
+                android:textColor="@color/colorPrimary"
+                android:textSize="30sp"/>
+
+            <TextView
+                android:id="@+id/tv_content2"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:text="标题内容"
+                android:textColor="@color/colorPrimary"
+                android:textSize="30sp"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="button"
+                android:id="@+id/bt"/>
+
 
             <TextView
                 android:layout_width="match_parent"
@@ -63,28 +94,12 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="30sp"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:text="标题内容"
-                android:textColor="@color/colorPrimary"
-                android:textSize="30sp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:text="标题内容"
-                android:textColor="@color/colorPrimary"
-                android:textSize="30sp"/>
-
-            <ListView
+            <com.syd.mystudydemo.training_focus.view.MyListView
                 android:id="@+id/lv"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
-            </ListView>
+            </com.syd.mystudydemo.training_focus.view.MyListView>
         </LinearLayout>
 
     </ScrollView>
