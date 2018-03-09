@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -39,6 +40,10 @@ public class ActivityMain extends BaseActivity {
     Button bt;
     @BindView(R.id.et)
     EditText et;
+    @BindView(R.id.ll_child)
+    LinearLayout llChild;
+    @BindView(R.id.ll_group)
+    LinearLayout llGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -184,9 +189,10 @@ public static void setListViewHeightBasedOnChildren(ListView listView) {
         list = new ArrayList<>();
         final ArrayAdapter arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
         lv.setAdapter(arrayAdapter);
-        boolean s =  tvContent1.isFocused();
+        boolean s = tvContent1.isFocused();
         boolean ss = tvContent1.isFocusableInTouchMode();
         boolean s1 = tvContent1.isFocusable();
+
         boolean s2 = tvContent2.isFocused();
         boolean s3 = tvContent2.isFocusable();
         boolean ss1 = tvContent2.isFocusableInTouchMode();
@@ -197,10 +203,16 @@ public static void setListViewHeightBasedOnChildren(ListView listView) {
         boolean s7 = et.isFocused();
         boolean s8 = bt.isFocusableInTouchMode();
         boolean s9 = tvContent2.isFocusableInTouchMode();
+
+        boolean s10 = llChild.isFocusable();
+        boolean s12 = llChild.isFocusableInTouchMode();
+
+        boolean s13 = llGroup.isFocusable();
+        boolean s14 = llGroup.isFocusableInTouchMode();
         tvContent1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean s =  tvContent1.isFocused();
+                boolean s = tvContent1.isFocused();
                 boolean ss = tvContent1.isFocusableInTouchMode();
                 boolean s1 = tvContent1.isFocusable();
                 boolean s2 = tvContent2.isFocused();
@@ -219,7 +231,7 @@ public static void setListViewHeightBasedOnChildren(ListView listView) {
         tvContent1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                boolean s =  tvContent1.isFocused();
+                boolean s = tvContent1.isFocused();
                 boolean ss = tvContent1.isFocusableInTouchMode();
                 boolean s1 = tvContent1.isFocusable();
                 boolean s2 = tvContent2.isFocused();
@@ -237,7 +249,7 @@ public static void setListViewHeightBasedOnChildren(ListView listView) {
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean s =  tvContent1.isFocused();
+                boolean s = tvContent1.isFocused();
                 boolean ss = tvContent1.isFocusableInTouchMode();
                 boolean s1 = tvContent1.isFocusable();
                 boolean s2 = tvContent2.isFocused();
@@ -272,6 +284,7 @@ public static void setListViewHeightBasedOnChildren(ListView listView) {
                     boolean s5 = bt.isFocused();
                     boolean s6 = et.isFocusable();
                     boolean s7 = et.isFocused();
+                    tvContent1.requestFocus();
                 }
             }
         };
