@@ -8,7 +8,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@android:style/Theme.Material.Light"
+   >
         <activity android:name=".activity.MainActivity"
             >
             <intent-filter>
@@ -31,6 +32,9 @@
         <activity android:name=".training_eventbus.ActivityEventBusSend"/>
         <!--Focus——training-->
         <activity android:name=".training_focus.ActivityMain"/>
+        <!--progressBar====training-->
+        <activity android:name=".training_progressbar.ActivityProgressBarMain"
+            android:theme="@android:style/Theme.Holo.Light"/>
 
     </application>
     <!--连接网络权限，用于执行云端语音能力 -->

@@ -3,26 +3,28 @@ package com.syd.mystudydemo.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.syd.mystudydemo.R;
 import com.syd.mystudydemo.activity.base.BaseActivity;
+import com.syd.mystudydemo.config.ActivityCategory;
 import com.syd.mystudydemo.process_training.activity.ActivityFirst;
+import com.syd.mystudydemo.training_eventbus.ActivityEventBus;
+import com.syd.mystudydemo.training_focus.ActivityMain;
+import com.syd.mystudydemo.training_inputmanager.ActivityInputManager;
+import com.syd.mystudydemo.training_progressbar.ActivityProgressBarMain;
 import com.syd.mystudydemo.training_surface.ActivitySurface;
 import com.syd.mystudydemo.utils.UtilsGoNextPage;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * Create at sydMobile
+ * 练习页面的主页面
+ */
 public class MainActivity extends BaseActivity implements View.OnClickListener {
-
-    String num;
-    String values;
-    //到下一training页面按钮
-    @BindView(R.id.tv_next)
-    TextView tvNextSurface;
     @BindView(R.id.activity_main)
     LinearLayout activityMain;
     @BindView(R.id.tv_to_activity_first)
@@ -33,7 +35,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     TextView tvNextEventbus;
     @BindView(R.id.tv_next_focus)
     TextView tvNextFocus;
-    private Button bt_toSenconActivity;
+    @BindView(R.id.tv_next_progressbar)
+    TextView tvNextProgressbar;
+    @BindView(R.id.tv_next_surface)
+    TextView tvNextSurface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -235,6 +240,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         tvNextEventbus.setOnClickListener(this);
         //到Focus页面
         tvNextFocus.setOnClickListener(this);
+        //到ProgressBar页面
+        tvNextProgressbar.setOnClickListener(this);
     }
 
     @Override
@@ -242,26 +249,29 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         switch (view.getId()) {
             // 到线程练习页面
             case R.id.tv_to_activity_first:
-                Intent intent1 = new Intent(this, ActivityFirst.class);
-                startActivity(intent1);
+//                Intent intent1 = new Intent(this, ActivityFirst.class);
+//                startActivity(intent1);
+                UtilsGoNextPage.toActivity(this, ActivityFirst.class, ActivityCategory.ACTIVITY_COMMON);
                 break;
             // 到Surface练习页面
-            case R.id.tv_next:
+            case R.id.tv_next_surface:
                 Intent intent2 = new Intent(this, ActivitySurface.class);
                 startActivity(intent2);
                 break;
             //到软键盘测试页面按钮
             case R.id.tv_next_inputmanager:
-                UtilsGoNextPage.toActivityInputManager(this);
+                UtilsGoNextPage.toActivity(this, ActivityInputManager.class, ActivityCategory.ACTIVITY_COMMON);
                 break;
             case R.id.tv_next_eventbus:
-
-                UtilsGoNextPage.toActivityEventBus(this);
+                UtilsGoNextPage.toActivity(this, ActivityEventBus.class, ActivityCategory.ACTIVITY_COMMON);
                 break;
             //到焦点练习页面
             case R.id.tv_next_focus:
-                UtilsGoNextPage.toActivityFocus(this);
+                UtilsGoNextPage.toActivity(this, ActivityMain.class, ActivityCategory.ACTIVITY_COMMON);
                 break;
+            //到ProgressBar页面
+            case R.id.tv_next_progressbar:
+                UtilsGoNextPage.toActivity(this, ActivityProgressBarMain.class, ActivityCategory.ACTIVITY_COMMON);
         }
     }
 }

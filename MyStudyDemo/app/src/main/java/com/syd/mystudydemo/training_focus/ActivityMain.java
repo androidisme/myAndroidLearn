@@ -51,6 +51,7 @@ public class ActivityMain extends BaseActivity {
         setContentView(R.layout.activity_focus_main);
         ButterKnife.bind(this);
         init();
+
     }
     //todo MeasureSpec
     /*
@@ -179,6 +180,19 @@ public static void setListViewHeightBasedOnChildren(ListView listView) {
 
      在ScrollView的LinearLayout中添加 android：denscendantFocusability = "blocksDescendants"
 
+    //TODO 设置阴影
+
+
+
+
+     */
+
+    //TODO 经验总结：
+
+    /*
+    类似于Toast这种一定不要在项目中直接使用，抽离出来。
+    还有APP的主色调，字体颜色等等
+    凡是在多出使用，多次调用的内容要抽离出来！
 
 
      */

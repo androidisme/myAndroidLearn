@@ -3,6 +3,7 @@ package com.syd.mystudydemo.process_training.activity;
 import android.os.Bundle;
 import android.os.Process;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
@@ -41,6 +42,8 @@ public class ActivityThird extends BaseActivity implements View.OnClickListener 
         Log.e(TAG, "getBaseContext-->" + getBaseContext());
         Log.e(TAG, "getApplicationContext()-->" + getApplicationContext());
         Log.e(TAG, "MyApplication.ss" + MyApplication.ss);
+
+
         //TODO Reactive X
         /*
            LINQ(语言集成查询) （Language Integrated Query）语言集成查询是一组
@@ -75,6 +78,19 @@ public class ActivityThird extends BaseActivity implements View.OnClickListener 
 
 
     }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+
+        return super.dispatchTouchEvent(ev);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return super.onTouchEvent(event);
+
+    }
+
 
     @Override
     protected void initView() {
