@@ -8,7 +8,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@android:style/Theme.Material.Light"
+        android:theme="@android:style/Theme.Material.Light.NoActionBar"
    >
         <activity android:name=".activity.MainActivity"
             >
@@ -35,7 +35,8 @@
         <!--progressBar====training-->
         <activity android:name=".training_progressbar.ActivityProgressBarMain"
             android:theme="@android:style/Theme.Holo.Light"/>
-
+        <!--shadow===training-->
+        <activity android:name=".training_shadow.ActivityShadow"/>
     </application>
     <!--连接网络权限，用于执行云端语音能力 -->
     <uses-permission android:name="android.permission.INTERNET"/>

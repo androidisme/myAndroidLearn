@@ -14,6 +14,7 @@ import com.syd.mystudydemo.training_eventbus.ActivityEventBus;
 import com.syd.mystudydemo.training_focus.ActivityMain;
 import com.syd.mystudydemo.training_inputmanager.ActivityInputManager;
 import com.syd.mystudydemo.training_progressbar.ActivityProgressBarMain;
+import com.syd.mystudydemo.training_shadow.ActivityShadow;
 import com.syd.mystudydemo.training_surface.ActivitySurface;
 import com.syd.mystudydemo.utils.UtilsGoNextPage;
 
@@ -39,6 +40,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     TextView tvNextProgressbar;
     @BindView(R.id.tv_next_surface)
     TextView tvNextSurface;
+    @BindView(R.id.tv_next_shadow)
+    TextView tvNextShadow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -242,6 +245,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         tvNextFocus.setOnClickListener(this);
         //到ProgressBar页面
         tvNextProgressbar.setOnClickListener(this);
+        tvNextShadow.setOnClickListener(this);
     }
 
     @Override
@@ -272,6 +276,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             //到ProgressBar页面
             case R.id.tv_next_progressbar:
                 UtilsGoNextPage.toActivity(this, ActivityProgressBarMain.class, ActivityCategory.ACTIVITY_COMMON);
+                break;
+            case R.id.tv_next_shadow:
+                UtilsGoNextPage.toActivity(this, ActivityShadow.class, ActivityCategory.ACTIVITY_COMMON);
+                break;
         }
     }
 }

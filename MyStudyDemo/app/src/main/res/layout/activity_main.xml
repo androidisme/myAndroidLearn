@@ -9,6 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="10px"
+    android:background="#eee"
     tools:context="com.syd.mystudydemo.activity.MainActivity">
     <!--公共按钮，负责跳转到相应的training页面-->
     <TextView
@@ -16,11 +17,18 @@
         android:id="@+id/tv_next_surface"
         android:text="@string/text_surface"/>
     <!--公共按钮，负责跳转到相应的training页面-->
-    <TextView
-        style="@style/activity_main_text"
-        android:id="@+id/tv_to_activity_first"
-        android:background="@color/colorAccent"
-        android:text="@string/text_process"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="51dp">
+        <TextView
+            style="@style/activity_main_text_1"
+            android:id="@+id/tv_to_activity_first"
+            android:background="@color/colorAccent"
+            android:text="@string/text_process"/>
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/tv_next_inputmanager"
@@ -40,6 +48,11 @@
 
     <TextView
         android:id="@+id/tv_next_progressbar"
+        style="@style/activity_main_text"
+        android:text="@string/text_progressbar"/>
+
+    <TextView
+        android:id="@+id/tv_next_shadow"
         style="@style/activity_main_text"
         android:text="@string/text_progressbar"/>
 </LinearLayout>

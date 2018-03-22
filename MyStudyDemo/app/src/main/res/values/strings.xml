@@ -8,4 +8,5 @@
     <string name="text_eventbus">到EventBus——training页面</string>
     <string name="text_focus">到Focus——training页面</string>
     <string name="text_progressbar">到ProgressBar-training页面</string>
+    <string name="text_shadow">到Shadow-training页面</string>
 </resources>

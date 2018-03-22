@@ -234,6 +234,7 @@ public class ActivityInputManager extends BaseActivity implements View.OnClickLi
         super.initDef();
         //获取manager
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+
         boolean isActive = imm.isActive();
         Method method;
 
