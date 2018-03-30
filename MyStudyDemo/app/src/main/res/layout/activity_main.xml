@@ -6,8 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="10px"
     android:background="#eee"
     tools:context="com.syd.mystudydemo.activity.MainActivity">
@@ -55,4 +53,13 @@
         android:id="@+id/tv_next_shadow"
         style="@style/activity_main_text"
         android:text="@string/text_progressbar"/>
+    <TextView
+        android:background="#ff0000"
+        android:layout_width="360dp"
+        android:layout_height="20dp"/>
+
+    <TextView
+        android:background="#ff0000"
+        android:layout_width="160dp"
+        android:layout_height="160dp"/>
 </LinearLayout>

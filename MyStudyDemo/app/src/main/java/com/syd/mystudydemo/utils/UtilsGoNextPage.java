@@ -2,31 +2,11 @@ package com.syd.mystudydemo.utils;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.TypedArray;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.widget.AppCompatImageView;
-import android.util.AttributeSet;
-import android.util.TypedValue;
 
-import com.syd.mystudydemo.R;
 import com.syd.mystudydemo.config.ActivityCategory;
 import com.syd.mystudydemo.training_eventbus.ActivityEventBus;
 import com.syd.mystudydemo.training_focus.ActivityMain;
 import com.syd.mystudydemo.training_inputmanager.ActivityInputManager;
-
-import static android.R.attr.format;
-import static android.R.attr.id;
-import static android.R.attr.layout_height;
-import static android.R.attr.layout_marginLeft;
-import static android.R.attr.layout_width;
-import static android.R.attr.name;
 
 /**
  * Created by sydMobile on 2018/1/30.
@@ -83,7 +63,7 @@ public class UtilsGoNextPage {
         }
     }
 
-
+/*
     package com.cnd.greencube.view;
 
     import android.content.Context;
@@ -102,11 +82,11 @@ public class UtilsGoNextPage {
 
     import com.cnd.greencube.R;
 
-    /**
+    *//**
      * 自定义角度ImagView
      *
      * @author 秦亚东
-     */
+     *//*
 
     public class CustomAngleImageView extends AppCompatImageView {
 
@@ -173,12 +153,12 @@ public class UtilsGoNextPage {
             }
         }
 
-        /**
+        *//**
          * 转换圆形Bitmap
          *
          * @param bitmap
          * @return
-         */
+         *//*
         private Bitmap getAngleBitmap(Bitmap bitmap) {
             int width = bitmap.getWidth();
             int height = bitmap.getHeight();
@@ -200,9 +180,9 @@ public class UtilsGoNextPage {
             return mBitmap;
         }
 
-        /**
+        *//**
          * 初始化画笔
-         */
+         *//*
         private void initPaint() {
             //弧形画笔
             initArc();
@@ -212,18 +192,18 @@ public class UtilsGoNextPage {
             initBitmap();
         }
 
-        /**
+        *//**
          * 图片画笔
-         */
+         *//*
         private void initBitmap() {
             mBitmapPaint = new Paint();
             mBitmapPaint.setAntiAlias(true);
             mBitmapPaint.setDither(true);
         }
 
-        /**
+        *//**
          * 直线画笔
-         */
+         *//*
         private void initLine() {
             mLinePaint = new Paint();
             mLinePaint.setAntiAlias(true);
@@ -233,9 +213,9 @@ public class UtilsGoNextPage {
             mLinePaint.setStrokeWidth(frameWidth);
         }
 
-        /**
+        *//**
          * 弧形画笔
-         */
+         *//*
         private void initArc() {
             mArcPaint = new Paint();
             mArcPaint.setAntiAlias(true);
@@ -243,12 +223,12 @@ public class UtilsGoNextPage {
             mArcPaint.setColor(frameColor);
         }
 
-        /**
+        *//**
          * 初始化属性
          *
          * @param context
          * @param attrs
-         */
+         *//*
         private void initAttrs(Context context, AttributeSet attrs) {
             TypedArray mTypedArray = context.obtainStyledAttributes(attrs, R.styleable.CustomAngleImageView);
             isFrame = mTypedArray.getBoolean(R.styleable.CustomAngleImageView_angle_frame, false);
@@ -284,15 +264,15 @@ public class UtilsGoNextPage {
         }
 
 
-        /**
+        *//**
          * dp转化px
          *
          * @return
-         */
+         *//*
         private float dp2px(float value) {
             return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, value, getResources().getDisplayMetrics());
         }
-    }
+    }*/
 
 
 }

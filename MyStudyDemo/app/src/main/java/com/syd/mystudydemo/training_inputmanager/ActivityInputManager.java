@@ -242,6 +242,39 @@ public class ActivityInputManager extends BaseActivity implements View.OnClickLi
 
     }
 
+    //TODO Hierarchy Viewer
+    /*
+    翻译自 https://developer.android.com/studio/profile/hierarchy-viewer.html
+    官方文档
+    审阅你的布局通过Hierarchy Viewer
+    Hierarchy Viewer 是一Android Device Monitor里面的一个工具，它可以帮助你测量布局层次
+    结构中每个视图的布局速度。它可以帮助你找到由视图层次结构造成的性能问题。
+
+    注意：Hierarchy Viewer 不再被继续开发，要在运行时查看视图层次结构的性能，你应该使用
+    在Android Studio中的Layout Inspector。但是Layout Inspector目前不能查看布局的内容信息。
+
+    这篇文章提供了Hierarchy Viewer的介绍以及用于分析布局的例子。如果你想要
+    查看UI中每个像素的布局，并将其与你的设计模式相比较，用 Pixel Perfect 工具
+
+    Get set Up  设置
+
+    如果您使用的是Android模拟器，则可以跳过本节。 否则，您需要按照以下步骤设置您的设备。
+
+    注意你的Android设备系统必须是4.1或者更高。
+
+    1. 打开开发者选项
+    2. 在开发机器上设置环境变量ANDROID_HVPROTO = ddm。该变量告诉Hierarchy Viewer使用ddm协议连接到设备
+    ，该协议与DDMS协议相同。 需要注意的是，连接到设备的主机上只能有一个进程，
+    因此您必须终止任何其他DDMS会话才能运行Hierarchy Viewer。
+
+
+
+
+
+
+
+     */
+
     @Override
     protected void initView() {
         super.initView();

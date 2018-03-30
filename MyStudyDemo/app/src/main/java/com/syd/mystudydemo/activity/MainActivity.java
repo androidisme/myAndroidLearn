@@ -2,6 +2,7 @@ package com.syd.mystudydemo.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,7 +15,6 @@ import com.syd.mystudydemo.training_eventbus.ActivityEventBus;
 import com.syd.mystudydemo.training_focus.ActivityMain;
 import com.syd.mystudydemo.training_inputmanager.ActivityInputManager;
 import com.syd.mystudydemo.training_progressbar.ActivityProgressBarMain;
-import com.syd.mystudydemo.training_shadow.ActivityShadow;
 import com.syd.mystudydemo.training_surface.ActivitySurface;
 import com.syd.mystudydemo.utils.UtilsGoNextPage;
 
@@ -231,6 +231,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         super.initView();
         tvNextSurface.setText(getResources().getString(R.string.text_surface));
 
+
     }
 
     @Override
@@ -278,8 +279,22 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 UtilsGoNextPage.toActivity(this, ActivityProgressBarMain.class, ActivityCategory.ACTIVITY_COMMON);
                 break;
             case R.id.tv_next_shadow:
-                UtilsGoNextPage.toActivity(this, ActivityShadow.class, ActivityCategory.ACTIVITY_COMMON);
+//                UtilsGoNextPage.toActivity(this, ActivityShadow.class, ActivityCategory.ACTIVITY_COMMON);
+                int ii = textReturn();
                 break;
         }
+    }
+
+    public int textReturn() {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0;j<5;j++){
+                if (i == 1) {
+                    return 1;
+                }
+            }
+
+            Log.e("Ddd", "ddd");
+        }
+        return 111;
     }
 }
