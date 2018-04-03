@@ -30,6 +30,7 @@
         <!--EventBus——training-->
         <activity android:name=".training_eventbus.ActivityEventBus"/>
         <activity android:name=".training_eventbus.ActivityEventBusSend"/>
+        <activity android:name=".training_eventbus.ActivityReceiver"/>
         <!--Focus——training-->
         <activity android:name=".training_focus.ActivityMain"/>
         <!--progressBar====training-->

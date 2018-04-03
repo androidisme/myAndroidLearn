@@ -2,6 +2,7 @@ package com.syd.mystudydemo.training_eventbus;
 
 import android.os.Bundle;
 
+import com.syd.mystudydemo.R;
 import com.syd.mystudydemo.activity.base.BaseActivity;
 
 import org.greenrobot.eventbus.EventBus;
@@ -14,6 +15,7 @@ public class ActivityEventBusSend extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_eventbus_main);
         init();
     }
 
