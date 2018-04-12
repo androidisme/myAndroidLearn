@@ -24,6 +24,7 @@ public class ActivityShadow extends BaseActivity {
         [Window]
         首先简单介绍一下什么是Window，单独从这个单词来看，意思就是 窗口
         那么这个类在Android中到底代表了什么意思呢？
+
         文档说明：
 
         顶级窗口外观和行为策略的抽象基类。这个类的实例应该被用作顶层视图添加
@@ -40,7 +41,20 @@ public class ActivityShadow extends BaseActivity {
         这些方法的实现大部分都是在PhoneWindow里面。每一个Activity里面都有一个Window，
         其真实对象是 PhoneWindow对象
 
+        [window_activity]
+        window在Activity中的存在
+
+        [window_dialog]
+        window在dialog中的存在
+
+
+
         [Window=]
+
+        window在Activity中就这样被实例化的（可以看到其实就是new了一个 PhoneWindow对象，关于PhoneWindow对象
+        下面会详细说到）
+
+        []
 
 
         setContenView() 就是在PhoneWindow这个类里面实现的

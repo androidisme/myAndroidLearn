@@ -15,6 +15,7 @@ import com.syd.mystudydemo.training_eventbus.ActivityEventBus;
 import com.syd.mystudydemo.training_focus.ActivityMain;
 import com.syd.mystudydemo.training_inputmanager.ActivityInputManager;
 import com.syd.mystudydemo.training_progressbar.ActivityProgressBarMain;
+import com.syd.mystudydemo.training_shadow.ActivityShadow;
 import com.syd.mystudydemo.training_surface.ActivitySurface;
 import com.syd.mystudydemo.utils.UtilsGoNextPage;
 
@@ -279,8 +280,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 UtilsGoNextPage.toActivity(this, ActivityProgressBarMain.class, ActivityCategory.ACTIVITY_COMMON);
                 break;
             case R.id.tv_next_shadow:
-//                UtilsGoNextPage.toActivity(this, ActivityShadow.class, ActivityCategory.ACTIVITY_COMMON);
-                int ii = textReturn();
+                UtilsGoNextPage.toActivity(this, ActivityShadow.class, ActivityCategory.ACTIVITY_COMMON);
+//                int ii = textReturn();
                 break;
         }
     }

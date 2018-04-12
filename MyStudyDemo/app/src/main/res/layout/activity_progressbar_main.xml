@@ -9,4 +9,13 @@
         android:id="@+id/pb"
         android:layout_width="match_parent"
         android:layout_height="100dp"/>
+
+    <ProgressBar
+        android:layout_marginTop="10px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminateTintMode="src_atop"
+        android:progressBarStyleSmall = "@color/main_green_00b661"
+        style="@android:style/Widget.ProgressBar.Small"
+        />
 </LinearLayout>

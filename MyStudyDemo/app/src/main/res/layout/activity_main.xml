@@ -5,24 +5,25 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#eee"
     android:orientation="vertical"
     android:paddingTop="10px"
-    android:background="#eee"
     tools:context="com.syd.mystudydemo.activity.MainActivity">
     <!--公共按钮，负责跳转到相应的training页面-->
     <TextView
-        style="@style/activity_main_text"
         android:id="@+id/tv_next_surface"
+        style="@style/activity_main_text"
         android:text="@string/text_surface"/>
     <!--公共按钮，负责跳转到相应的training页面-->
     <LinearLayout
-        android:orientation="vertical"
-        android:background="#ffffff"
         android:layout_width="match_parent"
-        android:layout_height="51dp">
+        android:layout_height="51dp"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
         <TextView
-            style="@style/activity_main_text_1"
             android:id="@+id/tv_to_activity_first"
+            style="@style/activity_main_text_1"
             android:background="@color/colorAccent"
             android:text="@string/text_process"/>
     </LinearLayout>
@@ -31,35 +32,36 @@
     <TextView
         android:id="@+id/tv_next_inputmanager"
         style="@style/activity_main_text"
-        android:text="@string/text_input"/>
+        android:text="?android:text"/>
 
 
     <TextView
         android:id="@+id/tv_next_eventbus"
         style="@style/activity_main_text"
-        android:text="@string/text_eventbus"/>
+        android:text="?attr/test_attr"/>
     <!---->
     <TextView
         android:id="@+id/tv_next_focus"
         style="@style/activity_main_text"
-        android:text="@string/text_focus"/>
+        android:text="?attr/test_attr"/>
 
     <TextView
         android:id="@+id/tv_next_progressbar"
         style="@style/activity_main_text"
-        android:text="@string/text_progressbar"/>
+        android:text="?attr/test_attr1"/>
 
     <TextView
         android:id="@+id/tv_next_shadow"
         style="@style/activity_main_text"
-        android:text="@string/text_progressbar"/>
-    <TextView
-        android:background="#ff0000"
-        android:layout_width="360dp"
-        android:layout_height="20dp"/>
+        android:text="@string/text_shadow"/>
 
     <TextView
-        android:background="#ff0000"
+        android:layout_width="360dp"
+        android:layout_height="20dp"
+        android:background="#ff0000"/>
+
+    <TextView
         android:layout_width="160dp"
-        android:layout_height="160dp"/>
+        android:layout_height="160dp"
+        android:background="#ff0000"/>
 </LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="test_attr" format="string">
+
+    </attr>
+    <attr name="test_attr1" format="string">
+
+
+    </attr>
+</resources>

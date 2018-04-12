@@ -8,9 +8,11 @@
 
      <LinearLayout
          android:layout_width="match_parent"
-         android:layout_height="420dp"
-         android:layout_marginBottom="20px"
+         android:layout_height="match_parent"
          android:orientation="vertical">
+         <com.syd.mystudydemo.training_shadow.MyView
+             android:layout_width="150dp"
+             android:layout_height="100dp"/>
 
          <Button
              android:layout_width="match_parent"
