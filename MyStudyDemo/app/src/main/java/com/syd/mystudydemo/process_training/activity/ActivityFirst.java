@@ -43,7 +43,7 @@ public class ActivityFirst extends BaseActivity implements View.OnClickListener 
     @Override
     protected void initView() {
         super.initView();
-        bt_toSenconActivity = findViewById(R.id.bt_secondprocess);
+        bt_toSenconActivity = (Button) findViewById(R.id.bt_secondprocess);
     }
 
     @Override

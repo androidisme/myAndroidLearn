@@ -48,7 +48,7 @@ public class ActivityByteMobile extends BaseActivity implements View.OnClickList
     @Override
     protected void initView() {
         super.initView();
-        bt_toSenconActivity = findViewById(R.id.bt_secondprocess);
+        bt_toSenconActivity = (Button) findViewById(R.id.bt_secondprocess);
         num = etInputNum.getText().toString();
         values = etInputMove.getText().toString();
 

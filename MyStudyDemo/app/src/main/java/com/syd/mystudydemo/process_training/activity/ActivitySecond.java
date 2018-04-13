@@ -53,9 +53,9 @@ public class ActivitySecond extends BaseActivity implements View.OnClickListener
     @Override
     protected void initView() {
         super.initView();
-        button = findViewById(R.id.bt_secondprocess);
+        button = (Button) findViewById(R.id.bt_secondprocess);
         button.setText("第三个Activity");
-        textView = findViewById(R.id.tv);
+        textView = (TextView) findViewById(R.id.tv);
         textView.setText(getClass().getSimpleName());
 
     }

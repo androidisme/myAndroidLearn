@@ -95,7 +95,7 @@ public class ActivityThird extends BaseActivity implements View.OnClickListener 
     @Override
     protected void initView() {
         super.initView();
-        textView = findViewById(tv);
+        textView = (TextView) findViewById(tv);
         textView.setText(getClass().getSimpleName());
         Log.e(TAG, "==" + this);
 

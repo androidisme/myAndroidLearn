@@ -59,6 +59,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         我们在Android官方文档查看这个属性
         ![]()
 
+
+
         参考：http://www.jianshu.com/p/060b5f68da79
 
         ![结构图,没有画]()

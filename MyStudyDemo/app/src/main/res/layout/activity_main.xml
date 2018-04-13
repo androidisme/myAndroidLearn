@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,7 +14,8 @@
     <TextView
         android:id="@+id/tv_next_surface"
         style="@style/activity_main_text"
-        android:text="@string/text_surface"/>
+        android:text="@string/text_surface"
+        />
     <!--公共按钮，负责跳转到相应的training页面-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,21 +48,26 @@
         android:text="?attr/test_attr"/>
 
     <TextView
+        android:visibility="gone"
         android:id="@+id/tv_next_progressbar"
         style="@style/activity_main_text"
         android:text="?attr/test_attr1"/>
 
     <TextView
+        android:visibility="gone"
         android:id="@+id/tv_next_shadow"
         style="@style/activity_main_text"
         android:text="@string/text_shadow"/>
 
     <TextView
+        android:visibility="gone"
         android:layout_width="360dp"
         android:layout_height="20dp"
         android:background="#ff0000"/>
 
     <TextView
+        android:theme="@style/mytheme"
+        style="@style/Theme.AppCompat.Light"
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:background="#ff0000"/>
