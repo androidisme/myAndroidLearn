@@ -31,7 +31,7 @@
         </item>
     </style>
 
-    <style name="activity_main_text">
+    <style name="activity_main_text" parent="@android:style/Theme.Holo.Light">
         <item name="android:layout_width">
             match_parent
         </item>
@@ -56,13 +56,16 @@
         <item name="android:textColor">
             #fff
         </item>
+        <item name="test_attr">w22w_style</item>
+
 
 
     </style>
-    <style name="mytheme">
-        <item name="android:text">halo</item>
-        <item name="android:textColor">@color/colorPrimary</item>
+    <style name="mytheme" parent="android:Theme.Holo.Light">
+        <item name="android:textColor">#f00</item>
         <item name="android:textSize">20sp</item>
+        <item name="test_attr">w22w</item>
+
     </style>
 
     <style name="activity_main_text_1">
@@ -86,5 +89,6 @@
         </item>
 
     </style>
+    <style name="mystyle" parent="android:Theme.Holo.Light"/>
 
 </resources>

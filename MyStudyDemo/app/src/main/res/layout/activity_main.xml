@@ -46,12 +46,17 @@
         android:id="@+id/tv_next_focus"
         style="@style/activity_main_text"
         android:text="?attr/test_attr"/>
+    <com.syd.mystudydemo.MyView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:isShow="d"
+        app:num="@dimen/unused_test1"/>
 
     <TextView
-        android:visibility="gone"
         android:id="@+id/tv_next_progressbar"
-        style="@style/activity_main_text"
-        android:text="?attr/test_attr1"/>
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="ddd"/>
 
     <TextView
         android:visibility="gone"
@@ -66,8 +71,6 @@
         android:background="#ff0000"/>
 
     <TextView
-        android:theme="@style/mytheme"
-        style="@style/Theme.AppCompat.Light"
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:background="#ff0000"/>
