@@ -4,10 +4,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.syd.mystudydemo.R;
 import com.syd.mystudydemo.activity.base.BaseActivity;
@@ -22,7 +26,7 @@ import butterknife.ButterKnife;
  * Created by sydMobile on 2018/1/30.
  */
 
-public class ActivityInputManager extends BaseActivity implements View.OnClickListener {
+public class ActivityInputManager extends BaseActivity implements View.OnClickListener, MyResultReceiver.Receiver {
     @BindView(R.id.et_search)
     EditText etSearch;//搜索框
 
@@ -30,6 +34,14 @@ public class ActivityInputManager extends BaseActivity implements View.OnClickLi
     ImageView ivSearch;//搜索按钮
 
     InputMethodManager imm;
+    @BindView(R.id.pb)
+    ProgressBar pb;
+    @BindView(R.id.tv_num)
+    TextView tvNum;
+    @BindView(R.id.bt_start)
+    Button btStart;
+    //MyResultReceiver的实例变量
+    private MyResultReceiver mMyResultReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +57,9 @@ public class ActivityInputManager extends BaseActivity implements View.OnClickLi
     先来看看API对InputMethodManager类的介绍：
     以整体输入法架构（IMF(input method framework)）为架构
     的中央系统API，关系着应用程序和当前输入方法之间的交互。
+    用 getSystemService(Context.INPUT_METHOD_SERVICE);来获取
+    它的实例
+
 
     关于这个类有4个主要的主题：
     1.Architecture Overview
@@ -99,6 +114,7 @@ public class ActivityInputManager extends BaseActivity implements View.OnClickLi
     的自由。Android的输入法框架也允许任意的第三方输入法，所以必须小心限制它们的选择
     和交互。
     下面是一些关于IMF安全架构的一些关键点
+
     只有系统可以通过BIND_INPUT_METHOD权限来直接访问IME的InputMethod接口。这在系统中
     通过不绑定到不需要此权限的输入法服务来实施，因此系统可以保证其他不受信任的客户端正在
     访问其控制之外的当前输入法。
@@ -108,140 +124,168 @@ public class ActivityInputManager extends BaseActivity implements View.OnClickLi
 
     输入方法的客户端只能访问其InputMethodSession接口。此接口的一个实例为每个客户端创建，
     并且只有来自与活动的客户端关联的会话的调用将被当前的IME处理。这是由AbstractInputMethod
-    Service为普通的IME强制执行的，但必须由定制原始InputMethodSession实现的IME明确处理
+    Service为普通的IME强制执行的，但必须由定制原始InputMethodSession实现的IME明确处理。
+
+    只有活跃的客户端的 InputConnection 才会接受操作，IMF告诉每个客户端进程是否是活跃的，并且
+    该框架会强制在非活动状态下调用当前的InputConnection将被忽略。这样就确保了当前的IME仅能够
+    向用户所看到的用户界面提供事件和文本编辑。
+
+     当屏幕关闭的时候，IME永远不会与（InputConnection）进行交互。这是通过屏幕关闭时使所有
+     客户端处于非活动状态来实施的，并且防止了坏的IME在用户无法意识到其行为时驱动用户界面。
+
+     客户端应用程序可以要求系统让用户选择新的IME，但是不能用编程的方式自行切换。这样可以避免
+     恶意应用程序将用户选择的切换到自己的IME，当用户切换到另一个应用程序的时候，IME仍然会
+     运行。另一方面，IME允许以编程的方式将系统切换到另一个IME，因为它已经有了完全的控制权对于
+     用户输入来说。
+
+     用户必须在设置之前明确启用新的IME，然后才能切换到该设置，以确认系统是否知道它并且希望其可
+     供使用。
+
+     一些对键盘的操作
+
+     1.显示输入法键盘
+     显示输入法键盘的方法有：
+     InputMethodManager  imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+
+     imm.showSoftInput(View view,int flags);
+
+     imm.showSoftInput(View view,int flags,ResultReceiver resultReceiver);
+
+     boolean showSoftInput(View view,int flags)
+
+     分别介绍一下：
+
+     图片：showSoftInput(12)
+     关于这个方法很简单，作用就是显示软键盘。
+     参数介绍：
+     view:当前焦点所在的view，这个view会接受键盘的输入
+
+     view也不是所有的
+     flags:提供附件的操作标志，可以取0、SHOW_IMPLICIT、
 
 
-        //TODO EventBus
-       EventBus
+     图片：showSoftInput(123)
 
-       EventBus是一个Android事件发布/订阅框架，通过解耦发布者和订阅者简化Android事件的传递
-       可以用于Android四大组件之间的通讯，也可以用于异步线程和主线程间的通讯、
+     明确要求当前输入法的软输入区域在需要时显示给用户。 如果用户与您的视图进行交互，
+     并表达他们希望开始对其执行输入，请调用此函数。（注意只有当你穿入的view获得焦点的时候
+     ，调用这个方法才会弹出键盘。）
+     警告：传递给此方法的{@link ResultReceiver}实例可能是一个长寿命的对象，因为它可能
+     不会被垃圾收集，直到所有相应的{@link ResultReceiver}对象传输到 不同的进程会被垃圾收集。
+     遵循一般模式来避免Android中的内存泄漏。
+     考虑使用{@link java.lang.ref.WeakReference}，以便{@link android.app.Activity}和{@link Context}
+     等应用程序逻辑对象可以进行垃圾收集，无论{@link ResultReceiver}。
 
-       传统的事件传递方式：Handler、BroadcastReceiver、Interface回调。
+     @param resultReceiver如果非null，则IME会在处理完请求后告诉您它做了什么。 您收到的结果代码可能是
+     {@link #RESULT_UNCHANGED_SHOWN}，
+    {@link #RESULT_UNCHANGED_HIDDEN}，{@link #RESULT_SHOWN}或
+    {@link #RESULT_HIDDEN}。
 
-       EventBus相对来说优点：代码简介、使用简单、并将事件发布和订阅充分解耦
+    介绍一下这个几个参数：
+    RESULT_UNCHANGED_SHOWN = 0 ;
+    showSoftInput(View,int,ResultReceiver)和hideSoftInputFromWindow(IBinder,int,ResultReceiver)
+    中的ResultReceiver的结果代码标志，表示输入键盘的状态没有改变，仍然保持显示状态。也就是说在你调用
+    这个方法之前输入键盘就处于显示状态了，调完之后仍然是显示状态。
 
-       事件 Event  又可称为消息，其实就是一个对象，可以是网络请求返回的字符串，也可以是某个
-       开关状态等等。 事件类型EventType是指事件所属的Class
+    RESULT_UNCHANGED_HIDDEN = 1;
+    showSoftInput(View,int,ResultReceiver)和hideSoftInputFromWindow(IBinder,int,ResultReceiver)
+    中的ResultReceiver的结果代码标志，表示输入键盘的状态没有改变，仍然保持隐藏状态。
 
-       事件可分为一般事件和Sticky事件，相对一般事件，Sticky事件不同之处在于，当事件发布后，
-       再有订阅者开始订阅该类型事件，依然能收到该类型事件的最近一个Sticky事件。
-
-       订阅者Subscriber   订阅某种事件类型对象，当有发布者发布这类事件后，EventBus会执行订阅者
-       的onEvent函数，这个函数叫事件响应函数。订阅者通过register接口订阅某个事件类型，unregister
-       接口退订。订阅者存在优先级，优先级高的订阅者可以取消事件继续向优先级低的订阅者分发，默认所有
-       订阅者优先级都为0
-
-       发布者Publisher：发布某事件的对象，通过post接口发布事件
-
-       简单使用：
-
-       EventBus是解决第二个页面向第一个页面传递信息的，如果你需要从第一个页面向第二个页面传递信息
-       直接使用Intent携带信息就可以了。
-
-       EventBus分为接受页面和传递页面
-
-       接受信息页面需要注册和取消注册以及处理接受的信息这三步操作
-
-      EventBus.getDefault().register(this);
-      EventBus.getDefault().unregister(this);
-      @Subcribe
-      自定义方法
-
-      发布消息页面
-      EventBus.getDefault().post(事件);
-
-      原理：利用反射-调用处理信息的方法
-      HashMap<Class<?>,List>
-      定义的处理信息的方法的参数作为 HashMap的key
+    RESULT_SHOWN = 2
+    showSoftInput(View,int,ResultReceiver)和hideSoftInputFromWindow(IBinder,int,ResultReceiver)
+    中的ResultReceiver的结果代码标志，表示输入键盘的状态发生了改变，切换到了显示的状态
 
 
-       onServiceConnected Service
+    RESUlT_HIDDEN = 3
+    showSoftInput(View,int,ResultReceiver)和hideSoftInputFromWindow(IBinder,int,ResultReceiver)
+    中ResultReceiver的结果代码标志，表示输入键盘从显示切换到隐藏时的状态
 
-       //todo 打开APP
+    其中关于ResultReceiver简单的说一下，
 
-       通过浏览器打开APP是一个很常见的功能了，具体的操作方法需要公司的网页开发人员和APP开发人员
-       共同合作完成。
+    ResultReceiver
 
-       我们经常会遇到这样的需求，通过点击一个链接打开APP
+    用于接收某人的回调结果的通用接口。 通过创建子类并实现{@link #onReceiveResult}来使用它，
+    然后您可以将其传递给其他人并通过IPC发送，并通过{@link #send}接收它们提供的结果。
+    然后你可以通过send(int Bundle)这个方法在进程间（IPC）进行传递信息。
 
-       对于APP打开最常规的就是通过url scheme的方式去打开APP，或者在其他APP中通过点击某个链接
-       打开另一个APP。
-       这些都是通过用户自定义的URI scheme实现的，不过背后还是Android的Intent机制。Google官网
-       文档（https://developer.chrome.com/multidevice/android/intents）。介绍了在Android
-       Chrome浏览器中网页打开APP的两种方法，一种是用户自定义的URI scheme（Custom URI scheme）
-       另外一种就是 "intent:"语法（Intent-based URI）
+    用在showSoftInput(View,int,ResultReceiver)方法中就是，
 
-       第一种用户自定义的URI scheme 形式如下：
-       scheme://host/path?parameters
+    自己定义一个类继承ResultReceiver，重写里面的 onReceiveResult方法。
+    onReceiverResult这个方法就是回调方法，用于处理其他进程传过来的数据
 
-       第二种的Intent-based URI的语法形式如下：
-       intent://host#Intent;参数;end
+    比如：
 
-       第二种形式可以看成是第一种形式的特例，很多文章将第二种形式叫Intent Scheme URL，但是在
-       Google的官方文档中并没有这样的说法。
+    public class MyResultRecevier  extends ResultReceiver{
+
+        public MyResultReceiver(Handler handler){
+
+            super(handler);
+        }
+
+        @Override
+        protected void onReceiveResult(int resultCode,Bundle resultData){
+            super.onReceiveResult(resultCode,resultData);
+            //根据返回结果处理相应的逻辑
+            // resultCode就会根据键盘的状态出现上面介绍的那几个值
+        }
+
+    }
+
+    介绍一下 flag，也就是showSoftInput()方法的第二个参数
+
+    这个参数的值可以取，0，SHOW_IM
 
 
+    关于showSoftInput(View,int)起作用的条件，
+    参数中的view必须是EditText以及他的子类，必须是获得焦点的，可见的，只有满足这些条件才起作用。
+    另外必须在当前布局已经加载完成后showSoftInput()才起作用（其他的和键盘有关的方法都一样）。
+    所以如果在onCreate中直接调用的话，很可能是不起作用的，这个时候开启一个延迟执行就可以了。
 
-       例如：
-       myapp://   (实际上就相当于一种协议，是你和网页开发人员定下的协议)
 
-       myapp://
+    写一个Activity用于启动IntentService
 
-       Custom Scheme URI打开APP
-
-       基本用法
-
-       需求：使用网页打开一个APP，并通过URL的参数给APP传递一些数据。
-
-       比如：
-       mayapp://aa.bb.c?id=1233
-
-       网页端简单的写法：
-
-       <html>
-          <head>
-            <title>URI打开APP</title>
-          <head>
-          <body>
-            <a href="mayapp://aa.bb.c?id=1233>打开Demo APP </a>
-          </body>
-         </html>
-
-       APP端需要接收来自网页信息的Activity，要在AndroidManifest.xml文件中的
-       Activity的intent-filter中声明相应的action、category和data的scheme等
-
-        <activity
-            android:name=".activity.main.StartActivity"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:scheme="myapp" android:host="aa.bb.c"（这个host可以不用加）/>
-            </intent-filter>
-        </activity>
-
-     */
+    */
 
     @Override
     protected void initDef() {
         super.initDef();
         //获取manager
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        etSearch.requestFocus();
 
-        boolean isActive = imm.isActive();
+//        ResultReceiver
+//        imm.showSoftInput()
+//        imm.toggleSoftInput(0, 0);
+//        boolean isActive = imm.isActive();
         Method method;
-
+        //创建一个 MyResultReceiver实例
+        mMyResultReceiver = new MyResultReceiver(new Handler());
 
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //将自己注册到MyResultReceiver中
+        mMyResultReceiver.setmReceiver(this);
+
+//        getWindow().getDecorView().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//            }
+//        },100);
+
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //取消注册
+        mMyResultReceiver.setmReceiver(null);
+
+    }
     //TODO Hierarchy Viewer
     /*
     翻译自 https://developer.android.com/studio/profile/hierarchy-viewer.html
@@ -284,13 +328,20 @@ public class ActivityInputManager extends BaseActivity implements View.OnClickLi
     protected void initListener() {
         super.initListener();
         ivSearch.setOnClickListener(this);
-        imm.toggleSoftInput(0, 0);
+//        imm.toggleSoftInput(0, 0);
         BroadcastReceiver receiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
 
             }
         };
+        btStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyDownLoadIntentService.startDownLoad(ActivityInputManager.this, mMyResultReceiver);
+            }
+        });
+
     }
 
     @Override
@@ -298,10 +349,19 @@ public class ActivityInputManager extends BaseActivity implements View.OnClickLi
         switch (v.getId()) {
             //搜索按钮
             case R.id.iv_search:
-                imm.hideSoftInputFromInputMethod(etSearch.getWindowToken(), 0);
-//                imm.toggleSoftInput(0,0);
+//                imm.hideSoftInputFromInputMethod(etSearch.getWindowToken(), 0);
+//                imm.toggleSoftInt(0,0);
+                imm.showSoftInput(etSearch, InputMethodManager.SHOW_IMPLICIT, new MyResultReceiver(new Handler()));
                 break;
 
         }
+    }
+
+    @Override
+    public void onReceiveResult(int resultCode, Bundle resultData) {
+        int progress = resultData.getInt("progress");
+        pb.setMax(50);
+        pb.setProgress(progress);
+        tvNum.setText(progress + "");
     }
 }

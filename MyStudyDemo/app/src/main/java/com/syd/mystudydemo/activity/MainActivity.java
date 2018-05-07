@@ -1,5 +1,6 @@
 package com.syd.mystudydemo.activity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,7 +12,6 @@ import com.syd.mystudydemo.R;
 import com.syd.mystudydemo.activity.base.BaseActivity;
 import com.syd.mystudydemo.config.ActivityCategory;
 import com.syd.mystudydemo.process_training.activity.ActivityFirst;
-import com.syd.mystudydemo.training_eventbus.ActivityEventBus;
 import com.syd.mystudydemo.training_focus.ActivityMain;
 import com.syd.mystudydemo.training_inputmanager.ActivityInputManager;
 import com.syd.mystudydemo.training_progressbar.ActivityProgressBarMain;
@@ -271,7 +271,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 UtilsGoNextPage.toActivity(this, ActivityInputManager.class, ActivityCategory.ACTIVITY_COMMON);
                 break;
             case R.id.tv_next_eventbus:
-                UtilsGoNextPage.toActivity(this, ActivityEventBus.class, ActivityCategory.ACTIVITY_COMMON);
+//                UtilsGoNextPage.toActivity(this, ActivityEventBus.class, ActivityCategory.ACTIVITY_COMMON);
+              new AlertDialog.Builder(this).setTitle("dddd").setMessage("内容").show();
                 break;
             //到焦点练习页面
             case R.id.tv_next_focus:
@@ -280,6 +281,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             //到ProgressBar页面
             case R.id.tv_next_progressbar:
                 UtilsGoNextPage.toActivity(this, ActivityProgressBarMain.class, ActivityCategory.ACTIVITY_COMMON);
+
                 break;
             case R.id.tv_next_shadow:
                 UtilsGoNextPage.toActivity(this, ActivityShadow.class, ActivityCategory.ACTIVITY_COMMON);
@@ -290,7 +292,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     public int textReturn() {
         for (int i = 0; i < 10; i++) {
-            for (int j = 0;j<5;j++){
+            for (int j = 0; j < 5; j++) {
                 if (i == 1) {
                     return 1;
                 }

@@ -1,8 +1,8 @@
 <resources xmlns:android="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+<!--    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        &lt;!&ndash; Customize your theme here. &ndash;&gt;
         <item name="colorPrimary">
             @color/colorPrimary
         </item>
@@ -16,9 +16,9 @@
             wwwww
         </item>
 
-    </style>
+    </style>-->
 
-    <style name="Unused_Theme" parent="Theme.AppCompat.Light.DarkActionBar">
+  <style name="Unused_Theme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">
             @color/colorPrimary
@@ -31,7 +31,7 @@
         </item>
     </style>
 
-    <style name="activity_main_text" parent="@android:style/Theme.Holo.Light">
+    <style name="activity_main_text" parent="@android:style/Theme">
         <item name="android:layout_width">
             match_parent
         </item>
@@ -57,16 +57,20 @@
             #fff
         </item>
         <item name="test_attr">w22w_style</item>
-
-
-
     </style>
-    <style name="mytheme" parent="android:Theme.Holo.Light">
+   <!-- <style name="mytheme" parent="android:Theme.Holo.Light">
         <item name="android:textColor">#f00</item>
         <item name="android:textSize">20sp</item>
         <item name="test_attr">w22w</item>
-
-    </style>
+        &lt;!&ndash;这个就是定义了属性attr_defStyle的值，取style_attr_defStyleAttr的值&ndash;&gt;
+        <item name="attr_defStyle">@style/style_attr_defStyleAttr</item>
+        &lt;!&ndash;下面是定义的每个属性的值&ndash;&gt;
+        <item name="text1"> text1-declare in Theme</item>
+        <item name="text2"> text2-declare in Theme</item>
+        <item name="text3"> text3-declare in Theme</item>
+        <item name="text4"> text4-declare in Theme</item>
+        <item name="text5"> text5-declare in Theme</item>
+    </style>-->
 
     <style name="activity_main_text_1">
         <item name="android:layout_width">
@@ -89,6 +93,25 @@
         </item>
 
     </style>
-    <style name="mystyle" parent="android:Theme.Holo.Light"/>
+<!--    <style name="mystyle" parent="android:Theme.Holo.Light"/>-->
+
+    <!--用来表示defStyleRes的-->
+    <style name="style_defStyleRes">
+        <item name="text1"> text1-declare in style_defStyleRes</item>
+        <item name="text2"> text2-declare in style_defStyleRes</item>
+        <item name="text3"> text3-declare in style_defStyleRes</item>
+        <item name="text4"> text4-declare in style_defStyleRes</item>
+    </style>
+    <!--用来表示 attr_defStyleAttr 这个属性的值的-->
+    <style name="style_attr_defStyleAttr">
+        <item name="text1"> text1-declare in style_attr_defStyleAttr</item>
+        <item name="text2"> text2-declare in style_attr_defStyleAttr</item>
+        <item name="text3"> text3-declare in style_attr_defStyleAttr</item>
+    </style>
+    <!--直接在布局中 style中使用的-->
+    <style name="style_MyViewStyle">
+        <item name="text1"> text1-declare in style_MyViewStyle</item>
+        <item name="text2"> text2-declare in style_MyViewStyle</item>
+    </style>
 
 </resources>

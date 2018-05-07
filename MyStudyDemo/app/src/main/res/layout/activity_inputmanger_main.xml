@@ -5,11 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <LinearLayout
-        android:focusableInTouchMode="true"
-        android:focusable="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
         <EditText
             android:id="@+id/et_search"
             android:layout_width="match_parent"
@@ -19,15 +21,58 @@
             android:paddingLeft="30px"
             android:singleLine="true"
             android:textSize="24px"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <EditText
+            android:id="@+id/et_search1"
+            android:layout_width="match_parent"
+            android:layout_height="88px"
+            android:background="#eee"
+            android:hint="搜索内容"
+            android:paddingLeft="30px"
+            android:singleLine="true"
+            android:textSize="24px"/>
+
+
     </LinearLayout>
 
+    <ProgressBar
+        android:id="@+id/pb"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:backgroundTintMode="screen"
+        android:max="100"
+        />
+
+    <TextView
+        android:id="@+id/tv_num"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text=""
+        android:textSize="30sp"/>
+
+    <Button
+        android:id="@+id/bt_start"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:text="开始"/>
 
     <ImageView
         android:id="@+id/iv_search"
-        android:contentDescription="隐藏键盘"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10px"
+        android:contentDescription="隐藏键盘"
         android:src="@mipmap/ic_launcher"
         />
 

@@ -2,12 +2,10 @@
 <resources>
 
 
-
     <declare-styleable name="MyView">
-        <attr name="isShow" >
+        <attr name="isShow">
             <flag name="d" value="1"/>
             <flag name="dd" value="2"/>
-
         </attr>
 
         <attr name="num" format="dimension">
@@ -21,6 +19,17 @@
         </attr>
 
     </declare-styleable>
+
+    <declare-styleable name="MyView1">
+        <attr name="text1" format="string"/>
+        <attr name="text2" format="string"/>
+        <attr name="text3" format="string"/>
+        <attr name="text4" format="string"/>
+        <attr name="text5" format="string"/>
+        <attr name="attr_defStyle" format="reference"/>
+    </declare-styleable>
+
+
     <attr name="dd" format="string">
 
     </attr>

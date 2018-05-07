@@ -52,4 +52,10 @@ public class MyView extends View {
         canvas.drawText("sss", 0, 2, 20, 100, paint);
         canvas.drawRect(0,376,100,600,paint);
     }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+    }
 }

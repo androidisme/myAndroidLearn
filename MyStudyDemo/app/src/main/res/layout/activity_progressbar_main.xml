@@ -9,11 +9,35 @@
         android:id="@+id/pb"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
-        android:layout_height="100dp"/>
+        android:layout_height="50dp"/>
 
     <ProgressBar
-        android:layout_marginTop="10px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10px"
         />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:text="button"/>
+
+    <CheckBox
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:checked="true"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="textView"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        />
+
 </LinearLayout>

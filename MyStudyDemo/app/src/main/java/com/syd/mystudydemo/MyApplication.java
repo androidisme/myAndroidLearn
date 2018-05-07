@@ -3,8 +3,6 @@ package com.syd.mystudydemo;
 import android.app.Application;
 import android.os.Process;
 
-import com.syd.mystudydemo.process_training.ProcessBusinessImp;
-
 /**
  * Created by Administrator on 2017/11/8.
  */
@@ -19,7 +17,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         //用于 process_training初始化
-        ProcessBusinessImp.getInstance(this).init(getApplicationContext(), getBaseContext());
+//        ProcessBusinessImp.getInstance(this).init(getApplicationContext(), getBaseContext());
         //ExceptionHander的使用
 //        ExceptionHandler.install(new ExceptionHandler.CustomExceptionHandler() {
 //            @Override

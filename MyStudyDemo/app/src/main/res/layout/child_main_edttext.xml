@@ -57,7 +57,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="130px"
-                android:imeOptions="actionPrevious"
+                android:imeOptions=""
                 android:text="actionPrevious"/>
 
             <EditText
@@ -85,19 +85,19 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="130px"
-                android:imeOptions="flagForceAscii"
+
                 android:text="flagForceAscii"/>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="130px"
-                android:imeOptions="flagNavigateNext"
+
                 android:text="flagNavigateNext"/>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="130px"
-                android:imeOptions="flagNavigatePrevious"
+
                 android:text="flagNavigatePrevious"/>
 
 
@@ -124,13 +124,12 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="130px"
-                android:imeOptions="flagNoFullscreen"
                 android:text="flagNoFullscreen"/>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="130px"
-                android:imeOptions="flagNoPersonalizedLearning"
+
                 android:text="flagNoPersonalizedLearning"/>
 
             <EditText

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -29,28 +29,26 @@
             android:background="@color/colorAccent"
             android:text="@string/text_process"/>
     </LinearLayout>
-
-
     <TextView
         android:id="@+id/tv_next_inputmanager"
         style="@style/activity_main_text"
-        android:text="?android:text"/>
+        android:text="@string/text_input"/>
 
 
     <TextView
         android:id="@+id/tv_next_eventbus"
         style="@style/activity_main_text"
-        android:text="?attr/test_attr"/>
+        android:text="@string/text_eventbus"/>
     <!---->
     <TextView
         android:id="@+id/tv_next_focus"
         style="@style/activity_main_text"
-        android:text="?attr/test_attr"/>
+        android:text="@string/text_focus"/>
+
     <com.syd.mystudydemo.MyView
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        app:isShow="d"
-        app:num="@dimen/unused_test1"/>
+        app:text1="Direct declare in xml"/>
 
     <TextView
         android:id="@+id/tv_next_progressbar"
@@ -59,16 +57,16 @@
         android:text="ddd"/>
 
     <TextView
-        android:visibility="gone"
         android:id="@+id/tv_next_shadow"
         style="@style/activity_main_text"
-        android:text="@string/text_shadow"/>
+        android:text="@string/text_shadow"
+        android:visibility="visible"/>
 
     <TextView
-        android:visibility="gone"
         android:layout_width="360dp"
         android:layout_height="20dp"
-        android:background="#ff0000"/>
+        android:background="#ff0000"
+        android:visibility="visible"/>
 
     <TextView
         android:layout_width="160dp"
