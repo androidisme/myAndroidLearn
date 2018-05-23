@@ -40,9 +40,13 @@
         <activity android:name=".training_progressbar.ActivityProgressBarMain"/>
         <!--shadow===training-->
         <activity android:name=".training_shadow.ActivityShadow"/>
+        <!--okHttp===training-->
+        <activity android:name=".training_okhttp.ActivityOkHttp"/>
 
         <service android:name=".training_inputmanager.MyDownLoadIntentService"/>
+
     </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
     <!--    &lt;!&ndash;连接网络权限，用于执行云端语音能力 &ndash;&gt;
         <uses-permission android:name="android.permission.INTERNET"/>
         &lt;!&ndash;获取手机录音机使用权限，听写、识别、语义理解需要用到此权限 &ndash;&gt;

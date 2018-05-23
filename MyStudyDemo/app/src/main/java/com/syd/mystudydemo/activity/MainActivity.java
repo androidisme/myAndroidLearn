@@ -14,6 +14,7 @@ import com.syd.mystudydemo.config.ActivityCategory;
 import com.syd.mystudydemo.process_training.activity.ActivityFirst;
 import com.syd.mystudydemo.training_focus.ActivityMain;
 import com.syd.mystudydemo.training_inputmanager.ActivityInputManager;
+import com.syd.mystudydemo.training_okhttp.ActivityOkHttp;
 import com.syd.mystudydemo.training_progressbar.ActivityProgressBarMain;
 import com.syd.mystudydemo.training_shadow.ActivityShadow;
 import com.syd.mystudydemo.training_surface.ActivitySurface;
@@ -43,6 +44,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     TextView tvNextSurface;
     @BindView(R.id.tv_next_shadow)
     TextView tvNextShadow;
+    @BindView(R.id.tv_next_okhttp)
+    TextView tvNextOkhttp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -250,6 +253,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         //到ProgressBar页面
         tvNextProgressbar.setOnClickListener(this);
         tvNextShadow.setOnClickListener(this);
+        //到okHttp页面
+        tvNextOkhttp.setOnClickListener(this);
+
     }
 
     @Override
@@ -272,7 +278,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.tv_next_eventbus:
 //                UtilsGoNextPage.toActivity(this, ActivityEventBus.class, ActivityCategory.ACTIVITY_COMMON);
-              new AlertDialog.Builder(this).setTitle("dddd").setMessage("内容").show();
+                new AlertDialog.Builder(this).setTitle("dddd").setMessage("内容").show();
                 break;
             //到焦点练习页面
             case R.id.tv_next_focus:
@@ -286,6 +292,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.tv_next_shadow:
                 UtilsGoNextPage.toActivity(this, ActivityShadow.class, ActivityCategory.ACTIVITY_COMMON);
 //                int ii = textReturn();
+                break;
+            case R.id.tv_next_okhttp:
+                UtilsGoNextPage.toActivity(this, ActivityOkHttp.class, ActivityCategory.ACTIVITY_COMMON);
                 break;
         }
     }

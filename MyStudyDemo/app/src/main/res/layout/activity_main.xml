@@ -29,6 +29,7 @@
             android:background="@color/colorAccent"
             android:text="@string/text_process"/>
     </LinearLayout>
+
     <TextView
         android:id="@+id/tv_next_inputmanager"
         style="@style/activity_main_text"
@@ -44,6 +45,11 @@
         android:id="@+id/tv_next_focus"
         style="@style/activity_main_text"
         android:text="@string/text_focus"/>
+
+    <TextView
+        android:id="@+id/tv_next_okhttp"
+        style="@style/activity_main_text"
+        android:text="OkHttp"/>
 
     <com.syd.mystudydemo.MyView
         android:layout_width="match_parent"

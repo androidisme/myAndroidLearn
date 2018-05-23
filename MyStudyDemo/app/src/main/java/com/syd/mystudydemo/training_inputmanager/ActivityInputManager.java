@@ -47,6 +47,7 @@ public class ActivityInputManager extends BaseActivity implements View.OnClickLi
         setContentView(R.layout.activity_inputmanger_main);
         ButterKnife.bind(this);
         init();
+
     }
 
     @Override
