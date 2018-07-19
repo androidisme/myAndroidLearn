@@ -170,6 +170,7 @@ public class ActivityTxt extends BaseActivity {
     {@link #RESULT_HIDDEN}。
 
     介绍一下这个几个参数：
+
     RESULT_UNCHANGED_SHOWN = 0 ;
     showSoftInput(View,int,ResultReceiver)和hideSoftInputFromWindow(IBinder,int,ResultReceiver)
     中的ResultReceiver的结果代码标志，表示输入键盘的状态没有改变，仍然保持显示状态。也就是说在你调用

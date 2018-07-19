@@ -19,6 +19,7 @@ import com.syd.mystudydemo.R;
 import com.syd.mystudydemo.activity.base.BaseActivity;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,7 +44,7 @@ public class ActivityOkHttp extends BaseActivity implements View.OnClickListener
     // 创建okHttpClient对象
     OkHttpClient mOkHttpClent = new OkHttpClient();
 
-    String url = "http://192.168.1.118:8080/userhmv2/hppic";
+    String url = "http://www.wanandroid.com/tools/mockapi/7601/syd";
     PopupWindow popupWindow = null;
     @BindView(R.id.bt_select_photo)
     Button btSelectPhoto;
@@ -64,6 +65,8 @@ public class ActivityOkHttp extends BaseActivity implements View.OnClickListener
         View view = View.inflate(this, R.layout.pop_selectphoto, null);
         popupWindow = new PopupWindow(this, null, 0);
         popupWindow.setContentView(view);
+
+
 
     }
 
@@ -159,13 +162,15 @@ public class ActivityOkHttp extends BaseActivity implements View.OnClickListener
         // 创建一个Request
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
 
-
         FormBody formBody = new FormBody.Builder().add("longitude", "116.2861").add("latitude", "39.8585").build();
 
 //        MediaType.parse("text/plain;charset=utf-8")
         RequestBody requestBody = RequestBody.create(MediaType.parse("text/plain;charset=utf-8"), "");
-        Request request = new Request.Builder().url(url).post(formBody).build();
+
+        Request request = new Request.Builder().url(url).get().build();
+
         Call call = mOkHttpClent.newCall(request);
+
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
